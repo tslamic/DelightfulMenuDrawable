@@ -32,7 +32,6 @@ proguard/
 ### Android Patch ###
 gen-external-apklibs
 
-
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
@@ -81,5 +80,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# Mac
 .DS_Store
-/build

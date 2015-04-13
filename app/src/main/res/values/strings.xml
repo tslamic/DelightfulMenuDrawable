@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">DelightfulHomeDrawable</string>
+
+    <string-array name="animation_types">
+        <item>TOP</item>
+        <item>TOP_FULL</item>
+        <item>BOTTOM</item>
+        <item>BOTTOM_FULL</item>
+    </string-array>
+
+</resources>
