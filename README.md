@@ -1,11 +1,6 @@
-*Delightful Home Drawable* is an implementation of a home-to-back-arrow icon presented in
-[Material design](http://www.google.com/design/spec/animation/delightful-details.html).
+*Delightful Home Drawable* is an implementation of a home-to-back-arrow icon presented in [Material design](http://www.google.com/design/spec/animation/delightful-details.html) (apologies for potato quality):
 
-<div style="margin-left:auto; margin-right:auto;">
-<video width="240" height="400" loop="true" autoplay="autoplay" controls="">
-<source src="media/showcase" type="video/webm" />
-</video>
-</div>
+![animation](http://i.imgur.com/hXRlhan.gif)
 
 To use it, simply copy-paste/download the
 [DelightfulHomeDrawable.java](https://github.com/tslamic/DelightfulMenuDrawable/blob/master/app/src/main/java/tslamic/github/com/delightfulmenudrawable/DelightfulMenuDrawable.java)
