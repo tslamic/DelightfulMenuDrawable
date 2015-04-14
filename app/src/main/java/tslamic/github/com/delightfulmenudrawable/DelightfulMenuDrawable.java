@@ -36,8 +36,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 /*
- * To understand how it works, read the following blog post:
- *      http://tslamic.github.io/x
+ * To read about the implementation process, visit http://tslamic.github.io/android-menu-icon/
  */
 public class DelightfulMenuDrawable extends Drawable {
 
@@ -62,13 +61,23 @@ public class DelightfulMenuDrawable extends Drawable {
     private boolean mIsRightToLeft;
     private boolean mIsBack;
 
+    /**
+     * Constructs a new instance with the default width and height.
+     *
+     * @param context Context instance.
+     */
     public DelightfulMenuDrawable(Context context) {
         this(getDefaultDpSize(context));
     }
 
-    public DelightfulMenuDrawable(int edge) {
+    /**
+     * Constructs a new instance with the specified width and height.
+     *
+     * @param side width and height in dp.
+     */
+    public DelightfulMenuDrawable(int side) {
         mPaint = getDefaultPaint();
-        setBounds(0, 0, edge, edge);
+        setBounds(0, 0, side, side);
     }
 
     @Override
@@ -109,27 +118,18 @@ public class DelightfulMenuDrawable extends Drawable {
         canvas.restore();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setAlpha(int alpha) {
         mPaint.setAlpha(alpha);
         invalidateSelf();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setColorFilter(ColorFilter cf) {
         mPaint.setColorFilter(cf);
         invalidateSelf();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getOpacity() {
         final int pixelFormat;
@@ -150,10 +150,9 @@ public class DelightfulMenuDrawable extends Drawable {
     /**
      * Sets the current animation progress.
      * <p/>
-     * The progress should be between 0 and 1, starting at 0 to go from menu to back-arrow,
-     * or 1 to 0 to go from back-arrow to menu.
-     * <p/>
-     * To obtain the appropriate Animator instance, call <code>getAnimator</code>.
+     * This is used by the <code>Animator</code> returned by <code>getAnimator</code>.
+     * The progress should be between 0 and 1 to go from menu to back-arrow,
+     * and 1 to 0 to go from back-arrow to menu.
      *
      * @param progress current progress
      */
@@ -172,7 +171,7 @@ public class DelightfulMenuDrawable extends Drawable {
     }
 
     /**
-     * Returns the appropriate Animator for this instance.
+     * Returns the appropriate <code>Animator</code> for this instance.
      *
      * @param duration animation duration in millis.
      * @return the Animator instance.
@@ -205,6 +204,8 @@ public class DelightfulMenuDrawable extends Drawable {
 
     /**
      * Sets the animation type.
+     * <p/>
+     * See {@link tslamic.github.com.delightfulmenudrawable.DelightfulMenuDrawable.Animation}
      *
      * @param animation animation type.
      */
@@ -217,6 +218,8 @@ public class DelightfulMenuDrawable extends Drawable {
 
     /**
      * Sets this drawable to adhere to right-to-left layout direction.
+     * <p/>
+     * False by default.
      *
      * @param isRtl true if this drawable should be right-to-left, false otherwise.
      */
@@ -224,8 +227,10 @@ public class DelightfulMenuDrawable extends Drawable {
         mIsRightToLeft = isRtl;
     }
 
-    /**
-     * Measures the drawable components.
+    /*
+     * Measures the components.
+     *
+     * This should be invoked whenever bounds change.
      */
     private void measure() {
         final Rect bounds = getBounds();
@@ -250,8 +255,7 @@ public class DelightfulMenuDrawable extends Drawable {
     }
 
     /**
-     * Returns the default width and height for this instance, if none is given,
-     * in density independent pixels.
+     * Returns the default width and height for this instance in density independent pixels.
      *
      * @param context Context instance.
      * @return the default width/height for this instance in dp.
@@ -268,7 +272,6 @@ public class DelightfulMenuDrawable extends Drawable {
      */
     private static Paint getDefaultPaint() {
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setStrokeJoin(Paint.Join.MITER);
         paint.setStyle(Paint.Style.STROKE);
         return paint;
     }
@@ -276,22 +279,22 @@ public class DelightfulMenuDrawable extends Drawable {
     public static enum Animation {
 
         /**
-         * Rotates between 0 and 180 when flipping.
+         * Rotates the drawable in counterclockwise semicircle.
          */
         TOP,
 
         /**
-         * Rotates between 0 and 360 when flipping.
+         * Rotates the drawable in counterclockwise circle.
          */
         TOP_FULL,
 
         /**
-         * Rotates between 360 and 180 when flipping.
+         * Rotates the drawable in clockwise semicircle.
          */
         BOTTOM,
 
         /**
-         * Rotates between 360 and 0 when flipping.
+         * Rotates the drawable in clockwise circle.
          */
         BOTTOM_FULL;
 
