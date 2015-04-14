@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">DelightfulHomeDrawable</string>
+    <string name="app_name">DelightfulMenuDrawable</string>
 
     <string-array name="animation_types">
         <item>TOP</item>
